@@ -8,8 +8,6 @@ import { viteMockServe } from 'vite-plugin-mock'
 
 import autoprefixer from 'autoprefixer'
 
-// 处理html的插件
-import { createHtmlPlugin } from 'vite-plugin-html'
 // cdn 加速
 // import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'
 import importToCDN from 'vite-plugin-cdn-import'
@@ -47,14 +45,6 @@ export default defineConfig({
     viteMockServe({
       // default
       mockPath: 'mock',
-    }),
-    createHtmlPlugin({
-      minify: true, // 压缩html
-      inject: {
-        data: {
-          title: 'bayunbuzi'
-        }
-      }
     }),
     // cdn 加速配置
     importToCDN({

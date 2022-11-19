@@ -8,8 +8,6 @@ import { viteMockServe } from 'vite-plugin-mock'
 
 import autoprefixer from 'autoprefixer'
 
-// 处理html的插件
-import { createHtmlPlugin } from 'vite-plugin-html'
 // cdn 加速
 // import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'
 import importToCDN from 'vite-plugin-cdn-import'
@@ -47,14 +45,6 @@ export default defineConfig({
     viteMockServe({
       // default
       mockPath: 'mock',
-    }),
-    createHtmlPlugin({
-      minify: true, // 压缩html
-      inject: {
-        data: {
-          title: 'bayunbuzi'
-        }
-      }
     }),
     // cdn 加速配置
     importToCDN({
@@ -120,7 +110,6 @@ export default defineConfig({
           grid: true,
         }),
         require('postcss-flexbugs-fixes'),
-        require('tailwindcss')
       ],
     },
   },
@@ -128,7 +117,6 @@ export default defineConfig({
     // 为文件路径取别名
     alias: {
       // comp: src 下的 components 路径别名
-      '@/': '/src/',
       comp: resolve(__dirname, 'src/components'),
       '/imgs': '/src/assets',
     },
@@ -154,8 +142,6 @@ export default defineConfig({
   },
   // 热更新配置
   server: {
-    host: true,
-    port: 8080,
     // 配置代理
     proxy: {
       '/api': {
